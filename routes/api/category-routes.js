@@ -27,16 +27,20 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const newCategory = Category.create(
+    const newCategory = await Category.create(
       {
         category_name: req.body.category_name,
       }
     )
-    return res.status(200).json(newCategory)
+    const updateView = await Category.findAll({
+      where: {
+        category_name: req.body.category_name
+      },
+    })
+    return res.status(200).json(updateView)
   } catch {
     return res.status(400).json(err)
   }
-  // create a new category
 });
 
 router.put('/:id', (req, res) => {
