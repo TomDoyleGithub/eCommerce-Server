@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       include: [{ model: Product }],
     });
     return res.status(200).json(categories)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   };
 });
@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Product}],
     });
     return res.status(200).json(selectedCategory)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   };
 });
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
       },
     })
     return res.status(200).json(updateView)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   }
 });
@@ -56,7 +56,7 @@ router.put('/:id', async (req, res) => {
       }
     )
     return res.status(200).json(updateCategory)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   }
 });
@@ -69,7 +69,7 @@ router.delete('/:id', async (req, res) => {
       },
     })
     return res.status(200).json(deleteCategory)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   }
 });

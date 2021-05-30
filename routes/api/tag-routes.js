@@ -9,7 +9,7 @@ const tags = await Tag.findAll({
   include: [{ model: Product }],
 });
 return res.status(200).json(tags)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   }
 });
@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Product }],
     });
     return res.status(200).json(selectedTag)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   }
 });
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
       },
     })
     return res.status(200).json(tagView)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   }
 });
@@ -56,7 +56,7 @@ router.put('/:id', async (req, res) => {
       }
     )
     return res.status(200).json(updateTag)
-  } catch {
+  } catch (err) {
     return res.status(400).json(err)
   }
 });
@@ -69,7 +69,7 @@ router.delete('/:id', async (req, res) => {
       },
     })
     return res.status(200).json(deleteTag)
-  } catch {
+  } catch (err) {
     res.status(400).json(err)
   }
 });
